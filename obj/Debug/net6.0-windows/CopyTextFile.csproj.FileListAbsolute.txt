@@ -1,0 +1,16 @@
+C:\Users\nik88\OneDrive\Desktop\C#\CopyTextFile\obj\Debug\net6.0-windows\CopyTextFile.Form1.resources
+C:\Users\nik88\OneDrive\Desktop\C#\CopyTextFile\obj\Debug\net6.0-windows\CopyTextFile.csproj.GenerateResource.cache
+C:\Users\nik88\OneDrive\Desktop\C#\CopyTextFile\obj\Debug\net6.0-windows\CopyTextFile.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nik88\OneDrive\Desktop\C#\CopyTextFile\obj\Debug\net6.0-windows\CopyTextFile.AssemblyInfoInputs.cache
+C:\Users\nik88\OneDrive\Desktop\C#\CopyTextFile\obj\Debug\net6.0-windows\CopyTextFile.AssemblyInfo.cs
+C:\Users\nik88\OneDrive\Desktop\C#\CopyTextFile\obj\Debug\net6.0-windows\CopyTextFile.csproj.CoreCompileInputs.cache
+C:\Users\nik88\OneDrive\Desktop\C#\CopyTextFile\bin\Debug\net6.0-windows\CopyTextFile.exe
+C:\Users\nik88\OneDrive\Desktop\C#\CopyTextFile\bin\Debug\net6.0-windows\CopyTextFile.deps.json
+C:\Users\nik88\OneDrive\Desktop\C#\CopyTextFile\bin\Debug\net6.0-windows\CopyTextFile.runtimeconfig.json
+C:\Users\nik88\OneDrive\Desktop\C#\CopyTextFile\bin\Debug\net6.0-windows\CopyTextFile.dll
+C:\Users\nik88\OneDrive\Desktop\C#\CopyTextFile\bin\Debug\net6.0-windows\CopyTextFile.pdb
+C:\Users\nik88\OneDrive\Desktop\C#\CopyTextFile\obj\Debug\net6.0-windows\CopyTextFile.dll
+C:\Users\nik88\OneDrive\Desktop\C#\CopyTextFile\obj\Debug\net6.0-windows\refint\CopyTextFile.dll
+C:\Users\nik88\OneDrive\Desktop\C#\CopyTextFile\obj\Debug\net6.0-windows\CopyTextFile.pdb
+C:\Users\nik88\OneDrive\Desktop\C#\CopyTextFile\obj\Debug\net6.0-windows\CopyTextFile.genruntimeconfig.cache
+C:\Users\nik88\OneDrive\Desktop\C#\CopyTextFile\obj\Debug\net6.0-windows\ref\CopyTextFile.dll
