@@ -1,3 +1,7 @@
+
+using System.IO.Compression;
+using System.Text.RegularExpressions;
+
 namespace CopyTextFile
 {
     public partial class Form1 : Form
@@ -10,37 +14,58 @@ namespace CopyTextFile
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var fileContent = string.Empty;
-            var filePath = string.Empty;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.RestoreDirectory = true;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                openFileDialog.InitialDirectory = "C:\\Users\\nik88\\OneDrive\\Desktop\\1";
+                string archivePath = openFileDialog.FileName;
+                string fileNameToFind = "1.fpage"; // –∏—Å–∫–æ–º—ã–π —Ñ–∞–π–ª
 
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                using (ZipArchive archive = ZipFile.OpenRead(archivePath))
                 {
-                    //Get the path of specified file
-                    filePath = openFileDialog.FileName;
-
-                    //Read the contents of the file into a stream
-                    var fileStream = openFileDialog.OpenFile();
-
-
-                    using (StreamReader reader = new StreamReader(fileStream))
+                    foreach (ZipArchiveEntry entry in archive.Entries)
                     {
-                        // œÓÎÛ˜ËÚ¸ Ì‡Á‚‡ÌËÂ Ù‡ÈÎ‡ ·ÂÁ ‡Ò¯ËÂÌËˇ
-                        string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(filePath);
-                        // —ÓÁ‰‡Ú¸ ÌÓ‚ÓÂ ËÏˇ Ù‡ÈÎ‡ Ò ‰Û„ËÏ ‡Ò¯ËÂÌËÂÏ
-                        string newFilePath = Path.ChangeExtension(filePath, ".txt");
+                        if (entry.FullName.EndsWith(fileNameToFind, StringComparison.OrdinalIgnoreCase))
+                        {
+                            using (StreamReader reader = new StreamReader(entry.Open()))
+                            {
+                                string fileContent = reader.ReadToEnd();
 
-                        using StreamWriter write = new StreamWriter(newFilePath, false);
-                        write.WriteLine(reader.ReadToEnd());
+                                // –ü–æ–∏—Å–∫ –≤—Å–µ—Ö –∑–Ω–∞—á–µ–Ω–∏–π UnicodeString –≤ —Ñ–∞–π–ª–µ
+                                string pattern = @"UnicodeString\s*=\s*""([^""]*)""";
+                                MatchCollection matches = Regex.Matches(fileContent, pattern);
 
+                                if (matches.Count > 0)
+                                {
+                                    // –°–æ–∑–¥–∞–Ω–∏–µ –Ω–æ–≤–æ–≥–æ —Ñ–∞–π–ª–∞ + –∑–∞–ø–∏—Å—å
+                                    string archiveFileName = Path.GetFileNameWithoutExtension(archivePath);
+                                    string newFilePath = Path.Combine(Path.GetDirectoryName(archivePath), $"{archiveFileName}.txt");
+                                    using (StreamWriter writer = new StreamWriter(newFilePath))
+                                    {
+                                        foreach (Match match in matches)
+                                        {
+                                            string unicodeString = match.Groups[1].Value;
+                                            writer.WriteLine(unicodeString);
+                                        }
+                                    }
 
+                                    MessageBox.Show("–§–∞–π–ª —É—Å–ø–µ—à–Ω–æ —Å–æ–∑–¥–∞–Ω!");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("UnicodeString –Ω–µ –Ω–∞–π–¥–µ–Ω!");
+                                }
+
+                                break;
+                            }
+                        }
                     }
                 }
-            }
 
+            }
         }
     }
 }
